@@ -1,0 +1,9 @@
+# ros comunication
+topic_name: camera/image
+
+# moving params
+vel_max_x: 0.25
+vel_max_yaw: 0.25
+acc: 0.25
+distance: 1.0
+theta: 1.570795

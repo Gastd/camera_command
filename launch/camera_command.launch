@@ -1,0 +1,7 @@
+<launch>
+    <arg name="command_config_file" default="$(find camera_command)/config/command.yaml"/>
+    <node name="camera_command" pkg="camera_command" type="camera_command_node" >
+        <rosparam file="$(arg command_config_file)" command="load"/>
+    </node>
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find camera_command)/launch/camera.rviz"/> -->
+</launch>
