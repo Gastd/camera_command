@@ -90,9 +90,8 @@ void CameraCommand::setNewCommand()
 
 void CameraCommand::calculateVelocities()
 {
-    static int last_comand = -1;
     // static ros::Duration old_time(0.00001);
-    if(moving_ && (last_comand == command_))
+    if(moving_)
         return;
 
     switch(command_)
@@ -156,11 +155,9 @@ void CameraCommand::publishCmdVel()
                         moving_ = true;
                         break;
         case TURN_LEFT: twist_msg_.angular.z = velocity(dt.toSec(), vel_max_yaw_);
-                        twist_msg_.linear.x = velocity(dt.toSec(), vel_max_x_);
                         moving_ = true;
                         break;
         case TURN_RIGHT:twist_msg_.angular.z = -velocity(dt.toSec(), vel_max_yaw_);
-                        twist_msg_.linear.x = velocity(dt.toSec(), vel_max_x_);
                         moving_ = true;
                         break;
         case -1:
