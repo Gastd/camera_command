@@ -25,7 +25,7 @@ CameraCommand::CameraCommand(ros::NodeHandle n): nh_(n), pnh_("~"), it_(n)
 
     // Init ros comunication
     vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
-    command_sub = it_.subscribe(topic_name_, 1, &CameraCommand::imageCallback, this);
+    command_sub_ = it_.subscribe(topic_name_, 1, &CameraCommand::imageCallback, this);
 }
 
 void CameraCommand::imageCallback(const sensor_msgs::ImageConstPtr& msg)
@@ -90,8 +90,11 @@ void CameraCommand::calculateVelocities()
     switch(command_)
     {
         case STRAIGHT:  velocityTime(vel_max_x_);
+                        break;
         case TURN_LEFT: velocityTime(vel_max_yaw_, false);
+                        break;
         case TURN_RIGHT: velocityTime(vel_max_yaw_, false);
+                         break;
     }
 }
 
@@ -156,6 +159,8 @@ void CameraCommand::publishCmdVel()
                         moving_ = false;
                         break;
     }
+    if(dt.toSec() > third_stop_)
+        moving_ = false;
     ROS_INFO_STREAM("twist_msg_.linear.x " << twist_msg_.linear.x);
     ROS_INFO_STREAM("twist_msg_.angular.z " << twist_msg_.angular.z);
     vel_pub_.publish(twist_msg_);

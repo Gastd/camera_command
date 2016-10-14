@@ -34,7 +34,7 @@ private:
     ros::Publisher vel_pub_;
     ros::Time init_time_;
     image_transport::ImageTransport it_;
-    image_transport::Subscriber command_sub;
+    image_transport::Subscriber command_sub_;
     geometry_msgs::Twist twist_msg_; 
 
     void imageCallback(const sensor_msgs::ImageConstPtr& msg);
