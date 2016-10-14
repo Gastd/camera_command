@@ -63,21 +63,29 @@ void CameraCommand::setNewCommand()
     if(moving_)
         return;
 
-    init_time_ = ros::Time::now();
     if( bgr_mean_.at(0) >= 170 &&
-        bgr_mean_.at(1) <= 100 &&
-        bgr_mean_.at(2) <= 100)
-            command_ = TURN_LEFT;
+        bgr_mean_.at(1) <= 80  &&
+        bgr_mean_.at(2) <= 80 )
+    {
+        init_time_ = ros::Time::now();
+        command_ = TURN_LEFT;
+    }
 
-    else if(bgr_mean_.at(0) <= 100 &&
+    else if(bgr_mean_.at(0) <= 80  &&
             bgr_mean_.at(1) >= 170 &&
-            bgr_mean_.at(2) <= 100)
-            command_ = STRAIGHT;
+            bgr_mean_.at(2) <= 80 )
+    {
+        init_time_ = ros::Time::now();
+        command_ = STRAIGHT;
+    }
 
-    else if((bgr_mean_.at(0) <= 100) &&
-            (bgr_mean_.at(1) <= 100) &&
+    else if((bgr_mean_.at(0) <= 80 ) &&
+            (bgr_mean_.at(1) <= 80 ) &&
             (bgr_mean_.at(2) >= 170))
-            command_ = TURN_RIGHT;
+    {
+        init_time_ = ros::Time::now();
+        command_ = TURN_RIGHT;
+    }
 }
 
 void CameraCommand::calculateVelocities()
@@ -148,9 +156,11 @@ void CameraCommand::publishCmdVel()
                         moving_ = true;
                         break;
         case TURN_LEFT: twist_msg_.angular.z = velocity(dt.toSec(), vel_max_yaw_);
+                        twist_msg_.linear.x = velocity(dt.toSec(), vel_max_x_);
                         moving_ = true;
                         break;
         case TURN_RIGHT:twist_msg_.angular.z = -velocity(dt.toSec(), vel_max_yaw_);
+                        twist_msg_.linear.x = velocity(dt.toSec(), vel_max_x_);
                         moving_ = true;
                         break;
         case -1:
