@@ -1,26 +1,26 @@
 # camera_command
-================
 
-Entrada
--------
+
+## Entrada
+
 Imagem rgb no formato de mensagem do ROS(sensor_msgs/Image) no tópico /camera/image
 
-Saida
------
+## Saida
+
 Velocidade de comando para o Pioneer no tópico /cmd_vel de tipo geometry_msgs/Twist
 
-Dependencias do ROS
--------------------
+## Dependencias do ROS
+
 * cv_bridge
 * image_transport
 * roscpp
 
-Dependencias fora do ROS
-------------------------
+## Dependencias fora do ROS
+
 * OpenCV
 
-Algoritmo
----------
+## Algoritmo
+
 O algoritmo implementado não foi retirado de nenhuma referência, foi criado e desenvolvido pelo autor para a aula de IEM de 2016/2<br>
 
 ```
@@ -43,8 +43,8 @@ Início
 fim
 ```
 
-Descrição dos arquivos
-----------------------
+## Descrição dos arquivos
+
 
 config/<br>
     ├── command.yaml: arquivo para de configuração dos parametros do no camera_command_node<br>
