@@ -21,8 +21,9 @@ Dependencias fora do ROS
 
 Algoritmo
 ---------
-O algoritmo implementado não foi retirado de nenhuma referência, foi criado e desenvolvido pelo autor para a aula de IEM de 2016/2
+O algoritmo implementado não foi retirado de nenhuma referência, foi criado e desenvolvido pelo autor para a aula de IEM de 2016/2<br>
 
+```
 Início
     enquanto verdade
         img = receber_frame_da_camera()
@@ -40,6 +41,7 @@ Início
         enviar_velocidade()
     fim enquanto
 fim
+```
 
 Descrição dos arquivos
 ----------------------
