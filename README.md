@@ -44,17 +44,17 @@ fim
 Descrição dos arquivos
 ----------------------
 
-config/
-    |--> command.yaml: arquivo para de configuração dos parametros do no camera_command_node
-include/
-    |--> camera_command
-            |--> camera_command.h: header da classe que implementa o controle do pioneer por cartões de cores
-launch/
-    |--> camera_command.launch: launch file que abre o no camera_command_node com a confguração descrita em command.yaml
-src/
-    |--> camera_command.cpp: source com o corpo dos metodos da classe CameraCommand definido em camera_command.h
-    |--> camera_command_node.cpp: No do ROS que comanda o pioneer com cartões de cores
-    |--> test_camera.cpp: no para testar o bom funcionamento da camera do pioneer, ele publica a imagem no topico /camera/image 
-CMakeLists.txt: Arquivo de configuração da build deste pacote
-package.xml: Arquivo de configuração de dependecias deste pacote e informações de versão, autor e descrição
-README.md: Este arquivo
+config/<br>
+    ├── command.yaml: arquivo para de configuração dos parametros do no camera_command_node<br>
+include/<br>
+    ├── camera_command<br>
+            ├── camera_command.h: header da classe que implementa o controle do pioneer por cartões de cores<br>
+launch/<br>
+    ├── camera_command.launch: launch file que abre o no camera_command_node com a confguração descrita em command.yaml<br>
+src/<br>
+    ├── camera_command.cpp: source com o corpo dos metodos da classe CameraCommand definido em camera_command.h<br>
+    ├── camera_command_node.cpp: No do ROS que comanda o pioneer com cartões de cores<br>
+    ├── test_camera.cpp: no para testar o bom funcionamento da camera do pioneer, ele publica a imagem no topico /camera/image <br>
+CMakeLists.txt: Arquivo de configuração da build deste pacote<br>
+package.xml: Arquivo de configuração de dependecias deste pacote e informações de versão, autor e descrição<br>
+README.md: Este arquivo<br>
